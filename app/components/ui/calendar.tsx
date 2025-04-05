@@ -15,8 +15,22 @@ function Calendar({
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
+  const [month, setMonth] = React.useState<Date>(props.defaultMonth || new Date())
+  
+  // Generate an array of years (e.g., from 1900 to current year + 10)
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: currentYear - 1900 + 11 }, (_, i) => 1900 + i)
+
+  const handleYearSelect = (year: string) => {
+    const newDate = new Date(month)
+    newDate.setFullYear(parseInt(year))
+    setMonth(newDate)
+  }
+
   return (
     <DayPicker
+      month={month}
+      onMonthChange={setMonth}
       showOutsideDays={showOutsideDays}
       className={cn("p-3 bg-zinc-900/90 text-white rounded-lg border border-zinc-800", className)}
       classNames={{
@@ -66,6 +80,52 @@ function Calendar({
         IconRight: ({ ...props }) => (
           <ChevronRight className="h-4 w-4 text-white" {...props} />
         ),
+        Caption: ({ displayMonth }) => {
+          const previousMonth = new Date(displayMonth)
+          previousMonth.setMonth(previousMonth.getMonth() - 1)
+          
+          const nextMonth = new Date(displayMonth)
+          nextMonth.setMonth(nextMonth.getMonth() + 1)
+          
+          return (
+            <div className="flex justify-center pt-1 relative items-center">
+              <button
+                onClick={() => setMonth(previousMonth)}
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute left-1 text-white border-zinc-700 hover:bg-zinc-800 hover:text-white"
+                )}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="flex justify-center items-center gap-1">
+                <span className="text-sm font-medium text-white">
+                  {displayMonth.toLocaleString('default', { month: 'long' })}
+                </span>
+                <select
+                  value={displayMonth.getFullYear()}
+                  onChange={(e) => handleYearSelect(e.target.value)}
+                  className="bg-transparent text-white text-sm font-medium focus:outline-none focus:ring-0 appearance-none cursor-pointer hover:text-zinc-300 transition-colors"
+                >
+                  {years.map((year) => (
+                    <option key={year} value={year} className="bg-zinc-800">
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button
+                onClick={() => setMonth(nextMonth)}
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute right-1 text-white border-zinc-700 hover:bg-zinc-800 hover:text-white"
+                )}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          )
+        }
       }}
       {...props}
     />

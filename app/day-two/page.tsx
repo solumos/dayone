@@ -121,6 +121,9 @@ export default function DayTwo() {
                 {displayedText.map((line, i) => (
                   <p key={i} className="mb-4 last:mb-0">
                     {line}
+                    {(i === currentLine || (i === quote.length - 1 && currentLine >= quote.length)) && (
+                      <span className="inline-block w-2 h-4 ml-1 bg-green-500 animate-[blink_1s_infinite]" />
+                    )}
                   </p>
                 ))}
               </div>

@@ -8,9 +8,13 @@ import { Background } from "./components/background";
 export default function Home() {
   const router = useRouter();
   const [date, setDate] = React.useState<Date>();
-  
+  const [maxDate, setMaxDate] = React.useState<Date>();
+
   React.useEffect(() => {
-    setDate(new Date());
+    const today = new Date();
+    setDate(today);
+    today.setHours(0, 0, 0, 0);
+    setMaxDate(today);
   }, []);
 
   const handleDateSelect = (selectedDate: Date | undefined) => {
@@ -46,11 +50,7 @@ export default function Home() {
               mode="single"
               selected={date}
               onSelect={handleDateSelect}
-              disabled={(date) => {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                return date > today;
-              }}
+              disabled={(date) => (maxDate ? date > maxDate : true)}
               initialFocus
               className="rounded-lg bg-zinc-900/80 border border-zinc-800"
             />

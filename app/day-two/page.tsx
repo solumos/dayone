@@ -52,7 +52,7 @@ export default function DayTwo() {
             if (isBack) {
               router.push('/');
             } else {
-              window.location.href = 'about:blank';
+              router.push("https://www.google.com");
             }
           }, 1500);
         }

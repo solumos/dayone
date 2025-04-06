@@ -7,7 +7,11 @@ import { Background } from "./components/background";
 
 export default function Home() {
   const router = useRouter();
-  const [date, setDate] = React.useState<Date>(() => new Date());
+  const [date, setDate] = React.useState<Date>();
+  
+  React.useEffect(() => {
+    setDate(new Date());
+  }, []);
 
   const handleDateSelect = (selectedDate: Date | undefined) => {
     if (selectedDate) {
@@ -42,7 +46,11 @@ export default function Home() {
               mode="single"
               selected={date}
               onSelect={handleDateSelect}
-              disabled={(date) => date > new Date()}
+              disabled={(date) => {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                return date > today;
+              }}
               initialFocus
               className="rounded-lg bg-zinc-900/80 border border-zinc-800"
             />

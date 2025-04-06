@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { Calendar } from "./components/ui/calendar";
-import { Background } from "./components/background";
+import { Calendar } from "@/app/components/ui/calendar";
+import { Background } from "@/app/components/background";
 
 export default function Home() {
   const router = useRouter();
@@ -12,7 +12,6 @@ export default function Home() {
 
   React.useEffect(() => {
     const today = new Date();
-    setDate(today);
     today.setHours(0, 0, 0, 0);
     setMaxDate(today);
   }, []);
@@ -50,8 +49,12 @@ export default function Home() {
               mode="single"
               selected={date}
               onSelect={handleDateSelect}
-              disabled={(date) => (maxDate ? date > maxDate : true)}
-              initialFocus
+              disabled={(date) => {
+                if (!maxDate) return true;
+                const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                const max = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
+                return d > max;
+              }}
               className="rounded-lg bg-zinc-900/80 border border-zinc-800"
             />
           </div>

@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import * as React from "react"
-import { useRouter } from 'next/navigation';
-import { Calendar } from "./components/ui/calendar"
-import { Background } from "./components/background"
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { Calendar } from "./components/ui/calendar";
+import { Background } from "./components/background";
 
 export default function Home() {
   const router = useRouter();
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date>(() => new Date());
 
   const handleDateSelect = (selectedDate: Date | undefined) => {
     if (selectedDate) {
       setDate(selectedDate);
       const year = selectedDate.getFullYear();
-      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-      const day = String(selectedDate.getDate()).padStart(2, '0');
+      const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+      const day = String(selectedDate.getDate()).padStart(2, "0");
       router.push(`/since/${year}/${month}/${day}`);
     }
   };
@@ -26,12 +26,12 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-2xl px-4 text-center">
         <h1 className="text-6xl font-bold text-white tracking-tight mb-8">
-          It&apos;s Always{' '}
+          It&apos;s Always{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             Day One
           </span>
         </h1>
-        
+
         <p className="text-xl text-zinc-400 mb-8">
           Every journey has a beginning. When did yours start?
         </p>
@@ -52,7 +52,7 @@ export default function Home() {
 
       {/* Footer link */}
       <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
-        <a 
+        <a
           href="https://d1.awsstatic.com/executive-insights/en_US/elements_of_amazons_day_one_culture.pdf"
           target="_blank"
           rel="noopener noreferrer"
@@ -63,4 +63,4 @@ export default function Home() {
       </div>
     </main>
   );
-} 
+}

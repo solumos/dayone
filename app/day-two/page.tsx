@@ -96,10 +96,10 @@ export default function DayTwo() {
       {/* CRT flicker effect */}
       <div className="absolute inset-0 pointer-events-none animate-flicker opacity-[0.15]" />
 
-      <div className="relative z-10 container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto space-y-8">
+      <div className="relative z-10 container mx-auto px-2 md:px-4 py-8 md:py-16">
+        <div className="max-w-3xl mx-auto space-y-4 md:space-y-8">
           {/* ASCII Art Header */}
-          <pre className="text-green-500 text-xs leading-none mb-12 pointer-events-none select-none">
+          <pre className="text-green-500 text-[0.5rem] md:text-xs leading-none mb-6 md:mb-12 pointer-events-none select-none hidden md:block">
             {`
 ▓█████▄  ▄▄▄     ▓██   ██▓   ▄▄▄█████▓ █     █░ ▒█████  
 ▒██▀ ██▌▒████▄    ▒██  ██▒   ▓  ██▒ ▓▒▓█░ █ ░█░▒██▒  ██▒
@@ -114,24 +114,27 @@ export default function DayTwo() {
 `}
           </pre>
 
+          {/* Mobile Title */}
+          <h1 className="text-green-500 text-xl font-bold mb-6 md:hidden text-center">DAY TWO</h1>
+
           {/* Terminal-style content */}
-          <div className="space-y-6 text-sm sm:text-base">
-            <div className="border border-green-500/30 p-6 bg-black/50 font-[Courier] leading-relaxed h-[300px] pointer-events-none">
+          <div className="space-y-4 md:space-y-6 text-xs md:text-base">
+            <div className="border border-green-500/30 p-3 md:p-6 bg-black/50 font-[Courier] leading-relaxed h-[250px] md:h-[300px] pointer-events-none">
               <div className="h-full flex flex-col">
                 {displayedText.map((line, i) => (
-                  <p key={i} className="mb-4 last:mb-0">
+                  <p key={i} className="mb-2 md:mb-4 last:mb-0">
                     {line}
                     {(i === currentLine || (i === quote.length - 1 && currentLine >= quote.length)) && (
-                      <span className="inline-block w-2 h-4 ml-1 bg-green-500 animate-[blink_1s_infinite]" />
+                      <span className="inline-block w-2 h-3 md:h-4 ml-1 bg-green-500 animate-[blink_1s_infinite]" />
                     )}
                   </p>
                 ))}
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col items-start justify-center gap-2 text-sm font-[Courier]">
+            <div className="mt-6 md:mt-12 flex flex-col items-start justify-center gap-2 text-xs md:text-sm font-[Courier]">
               <div className="flex items-center gap-4 text-green-500/70">
-                <span className="text-xs opacity-50">Use arrow keys to select, ENTER to confirm</span>
+                <span className="text-[10px] md:text-xs opacity-50">Use arrow keys to select, ENTER to confirm</span>
               </div>
               <div className="flex flex-col items-start gap-1 mt-2">
                 <div className={`flex items-center gap-2 ${selectedOption === 'back' ? 'text-green-500' : 'text-green-500/50'}`}>

@@ -32,19 +32,19 @@ export default function Home() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-2xl px-4 text-center">
-        <h1 className="text-6xl font-bold text-white tracking-tight mb-8">
+        <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-8">
           It&apos;s Always{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             Day One
           </span>
         </h1>
 
-        <p className="text-xl text-zinc-400 mb-8">
+        <p className="text-lg md:text-xl text-zinc-400 mb-6 md:mb-8">
           Every journey has a beginning. When did yours start?
         </p>
 
         <div className="flex justify-center">
-          <div className="h-[400px] flex items-start">
+          <div className="h-[350px] md:h-[400px] flex items-start">
             <Calendar
               mode="single"
               selected={date}
@@ -55,7 +55,7 @@ export default function Home() {
                 const max = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
                 return d > max;
               }}
-              className="rounded-lg bg-zinc-900/80 border border-zinc-800"
+              className="rounded-lg bg-zinc-900/80 border border-zinc-800 scale-90 md:scale-100"
             />
           </div>
         </div>

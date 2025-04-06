@@ -39,9 +39,9 @@ export function TimeDisplay({ startDate }: TimeDisplayProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2 md:space-y-4">
       <h1 
-        className="text-4xl font-bold text-white cursor-pointer hover:opacity-80 transition-opacity select-none"
+        className="text-2xl md:text-4xl font-bold text-white cursor-pointer hover:opacity-80 transition-opacity select-none px-4 md:px-0"
         onClick={handleClick}
       >
         {(() => {
@@ -57,7 +57,7 @@ export function TimeDisplay({ startDate }: TimeDisplayProps) {
           }
         })()} passed, but:
       </h1>
-      <p className="text-4xl font-bold text-white">
+      <p className="text-2xl md:text-4xl font-bold text-white px-4 md:px-0">
         It&apos;s Always{" "}
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
           Day One

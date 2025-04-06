@@ -54,17 +54,17 @@ export default function DatePage({
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       <Background />
 
-      <div className="relative z-10 w-full max-w-2xl px-4 text-center space-y-16">
+      <div className="relative z-10 w-full max-w-2xl px-4 text-center space-y-8 md:space-y-16">
         {isToday ? (
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-2xl md:text-4xl font-bold text-white">
               Today is{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
                 Day One
               </span>
             </h1>
-            <p className="text-4xl font-bold text-white">Tomorrow, remember:</p>
-            <p className="text-4xl font-bold text-white">
+            <p className="text-2xl md:text-4xl font-bold text-white">Tomorrow, remember:</p>
+            <p className="text-2xl md:text-4xl font-bold text-white">
               It&apos;s Always{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
                 Day One
@@ -76,11 +76,11 @@ export default function DatePage({
         )}
 
         <div className="space-y-2 select-none">
-          <p className="text-xl text-zinc-400">
+          <p className="text-lg md:text-xl text-zinc-400">
             Your journey began on {formattedStartDate}
           </p>
-          <p className="text-xl text-zinc-400">Today is {formattedToday}</p>
-          <p className="text-sm text-zinc-600 mt-8 opacity-80">
+          <p className="text-lg md:text-xl text-zinc-400">Today is {formattedToday}</p>
+          <p className="text-xs md:text-sm text-zinc-600 mt-6 md:mt-8 opacity-80">
             ⌘+D or Ctrl+D to bookmark this page for later
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function DatePage({
 
       <Link 
         href="/day-two" 
-        className="absolute bottom-6 text-[14px] text-zinc-800 opacity-0 hover:opacity-100 transition-all duration-700 cursor-help select-none hover:text-zinc-400"
+        className="absolute bottom-4 md:bottom-6 text-[12px] md:text-[14px] text-zinc-800 opacity-0 hover:opacity-100 transition-all duration-700 cursor-help select-none hover:text-zinc-400"
       >
         but what about day two?
       </Link>

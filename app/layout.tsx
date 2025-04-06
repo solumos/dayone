@@ -14,20 +14,18 @@ const ptMono = PT_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://itsalwaysdayone.com'),
   title: "It's Always Day One",
-  description: "Every journey has a beginning. When did yours start? Track and celebrate your journey from Day One.",
-  keywords: "day one, journey tracker, personal milestone, start date calculator",
+  description: "Embrace the Day One mentality of relentless innovation, customer obsession, and bold decision-making.",
+  keywords: "day one, bezos philosophy, innovation, customer obsession, startup mentality, leadership principles",
   authors: [{ name: "Day One Team" }],
   creator: "Day One Team",
   publisher: "Day One",
   robots: "index, follow",
-  themeColor: "#000000",
-  colorScheme: "dark",
-  viewport: "width=device-width, initial-scale=1",
   openGraph: {
     type: "website",
     title: "It's Always Day One",
-    description: "Every journey has a beginning. When did yours start? Track and celebrate your journey from Day One.",
+    description: "Embrace the Day One mentality of relentless innovation, customer obsession, and bold decision-making.",
     siteName: "It's Always Day One",
     url: "https://itsalwaysdayone.com",
     images: [{
@@ -40,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "It's Always Day One",
-    description: "Every journey has a beginning. When did yours start? Track and celebrate your journey from Day One.",
+    description: "Embrace the Day One mentality of relentless innovation, customer obsession, and bold decision-making.",
     images: ["/api/og"],
   },
   icons: {
@@ -49,6 +47,13 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+};
+
+export const viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

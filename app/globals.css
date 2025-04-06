@@ -69,35 +69,45 @@ body {
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-/* Grid animation */
-@keyframes grid-scroll {
+@keyframes scanline {
   0% {
-    transform: perspective(1000px) rotateX(60deg) translateY(0) translateX(0);
+    transform: translateY(0);
   }
   100% {
-    transform: perspective(1000px) rotateX(60deg) translateY(100px) translateX(100px);
+    transform: translateY(100%);
   }
 }
 
-.grid-background {
-  animation: grid-scroll 16s linear infinite;
-  will-change: transform;
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.67807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.08594; }
+  60% { opacity: 0.20313; }
+  65% { opacity: 0.71988; }
+  70% { opacity: 0.53455; }
+  75% { opacity: 0.37288; }
+  80% { opacity: 0.71428; }
+  85% { opacity: 0.70419; }
+  90% { opacity: 0.7003; }
+  95% { opacity: 0.36108; }
+  100% { opacity: 0.24387; }
+}
+
+@layer utilities {
+  .animate-scanline {
+    animation: scanline 8s linear infinite;
+  }
+  
+  .animate-flicker {
+    animation: flicker 0.15s infinite;
+  }
 }

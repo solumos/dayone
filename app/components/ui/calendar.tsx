@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker } from "react-day-picker";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "./button"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./button";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({
   className,
@@ -15,24 +15,29 @@ function Calendar({
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
-  const [month, setMonth] = React.useState<Date>(props.defaultMonth || new Date())
-  
+  const [month, setMonth] = React.useState<Date>(
+    props.defaultMonth || new Date()
+  );
+
   // Generate an array of years (e.g., from 1900 to current year + 10)
-  const currentYear = new Date().getFullYear()
-  const years = Array.from({ length: currentYear - 1900 + 11 }, (_, i) => 1900 + i)
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: currentYear - 1900 + 1 }, (_, i) => 1900 + i);
 
   const handleYearSelect = (year: string) => {
-    const newDate = new Date(month)
-    newDate.setFullYear(parseInt(year))
-    setMonth(newDate)
-  }
+    const newDate = new Date(month);
+    newDate.setFullYear(parseInt(year));
+    setMonth(newDate);
+  };
 
   return (
     <DayPicker
       month={month}
       onMonthChange={setMonth}
       showOutsideDays={showOutsideDays}
-      className={cn("p-3 bg-zinc-900/90 text-white rounded-lg border border-zinc-800", className)}
+      className={cn(
+        "p-3 bg-zinc-900/90 text-white rounded-lg border border-zinc-800",
+        className
+      )}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
@@ -47,8 +52,7 @@ function Calendar({
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
-        head_cell:
-          "text-zinc-400 rounded-md w-8 font-normal text-[0.8rem]",
+        head_cell: "text-zinc-400 rounded-md w-8 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
         cell: cn(
           "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-blue-500/20",
@@ -68,8 +72,7 @@ function Calendar({
         day_outside:
           "text-zinc-600 aria-selected:bg-blue-500/20 aria-selected:text-zinc-400",
         day_disabled: "text-zinc-600 opacity-50",
-        day_range_middle:
-          "aria-selected:bg-zinc-800 aria-selected:text-white",
+        day_range_middle: "aria-selected:bg-zinc-800 aria-selected:text-white",
         day_hidden: "invisible",
         ...classNames,
       }}
@@ -81,12 +84,12 @@ function Calendar({
           <ChevronRight className="h-4 w-4 text-white" {...props} />
         ),
         Caption: ({ displayMonth }) => {
-          const previousMonth = new Date(displayMonth)
-          previousMonth.setMonth(previousMonth.getMonth() - 1)
-          
-          const nextMonth = new Date(displayMonth)
-          nextMonth.setMonth(nextMonth.getMonth() + 1)
-          
+          const previousMonth = new Date(displayMonth);
+          previousMonth.setMonth(previousMonth.getMonth() - 1);
+
+          const nextMonth = new Date(displayMonth);
+          nextMonth.setMonth(nextMonth.getMonth() + 1);
+
           return (
             <div className="flex justify-center pt-1 relative items-center">
               <button
@@ -100,7 +103,7 @@ function Calendar({
               </button>
               <div className="flex justify-center items-center gap-1">
                 <span className="text-sm font-medium text-white">
-                  {displayMonth.toLocaleString('default', { month: 'long' })}
+                  {displayMonth.toLocaleString("default", { month: "long" })}
                 </span>
                 <select
                   value={displayMonth.getFullYear()}
@@ -124,13 +127,13 @@ function Calendar({
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
-          )
-        }
+          );
+        },
       }}
       {...props}
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = "Calendar";
 
-export { Calendar }
+export { Calendar };

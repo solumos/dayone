@@ -33,7 +33,7 @@ export default function Home() {
         </h1>
         
         <p className="text-xl text-zinc-400 mb-8">
-          When was the last time you thought like a startup? Choose a date to track your Day One mindset.
+          Every journey has a beginning. When did yours start?
         </p>
 
         <div className="flex justify-center">

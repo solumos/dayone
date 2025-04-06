@@ -49,6 +49,18 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Footer link */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+        <a 
+          href="https://d1.awsstatic.com/executive-insights/en_US/elements_of_amazons_day_one_culture.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-600 hover:text-zinc-400 transition-colors"
+        >
+          Learn more about Day One →
+        </a>
+      </div>
     </main>
   );
 } 

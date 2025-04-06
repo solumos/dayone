@@ -17,15 +17,15 @@ export default function DatePage({
     parseInt(params.year),
     parseInt(params.month) - 1,
     parseInt(params.day),
-    12, // Set to noon in local time to avoid timezone issues
+    0, // Set to midnight in local time
     0,
     0,
     0
   );
 
   const today = new Date();
-  today.setHours(12, 0, 0, 0); // Set to noon in local time to avoid timezone issues
-  startDate.setHours(12, 0, 0, 0); // Ensure both dates are set to noon
+  today.setHours(0, 0, 0, 0); // Set to midnight in local time
+  startDate.setHours(0, 0, 0, 0); // Ensure both dates are set to midnight
 
   // Redirect to home page if date is in the future
   if (startDate.getTime() > today.getTime()) {

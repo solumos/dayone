@@ -31,7 +31,7 @@ export default function DayTwo() {
           if (prev.length >= 3) return '';
           return prev + '.';
         });
-      }, 300);
+      }, 500);
     }
     return () => clearInterval(dotInterval);
   }, [isLoading]);
@@ -54,7 +54,7 @@ export default function DayTwo() {
             } else {
               window.location.href = 'about:blank';
             }
-          }, 800);
+          }, 1500);
         }
       }
     };

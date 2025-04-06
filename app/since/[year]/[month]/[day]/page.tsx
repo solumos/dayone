@@ -1,6 +1,8 @@
+'use client';
+
 import { Background } from "../../../../components/background";
 import { TimeDisplay } from "../../../../components/TimeDisplay";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function DatePage({
@@ -8,20 +10,27 @@ export default function DatePage({
 }: {
   params: { year: string; month: string; day: string };
 }) {
+  const router = useRouter();
+  
   // Create a date from the URL parameters
   const startDate = new Date(
     parseInt(params.year),
     parseInt(params.month) - 1,
-    parseInt(params.day)
+    parseInt(params.day),
+    12, // Set to noon in local time to avoid timezone issues
+    0,
+    0,
+    0
   );
 
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  startDate.setHours(0, 0, 0, 0);
+  today.setHours(12, 0, 0, 0); // Set to noon in local time to avoid timezone issues
+  startDate.setHours(12, 0, 0, 0); // Ensure both dates are set to noon
 
   // Redirect to home page if date is in the future
   if (startDate.getTime() > today.getTime()) {
-    redirect("/");
+    router.push('/');
+    return null;
   }
 
   const isToday = today.getTime() === startDate.getTime();

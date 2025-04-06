@@ -11,9 +11,9 @@ type TimeDisplayProps = {
 export function TimeDisplay({ startDate }: TimeDisplayProps) {
   // Calculate days since start (today = 0, yesterday = 1, etc.)
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  today.setHours(12, 0, 0, 0); // Set to noon in local time
   const start = new Date(startDate);
-  start.setHours(0, 0, 0, 0);
+  start.setHours(12, 0, 0, 0); // Set to noon in local time
   const diffTime = today.getTime() - start.getTime();
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 

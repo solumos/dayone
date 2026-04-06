@@ -80,15 +80,18 @@ export default function DatePage({
             Your journey began on {formattedStartDate}
           </p>
           <p className="text-lg md:text-xl text-zinc-400">Today is {formattedToday}</p>
-          <p className="text-xs md:text-sm text-zinc-600 mt-6 md:mt-8 opacity-80">
+          <p className="text-xs md:text-sm text-zinc-600 mt-6 md:mt-8 opacity-80 hidden md:block">
             ⌘+D or Ctrl+D to bookmark this page for later
+          </p>
+          <p className="text-xs text-zinc-600 mt-6 opacity-80 md:hidden">
+            Bookmark this page to check back later
           </p>
         </div>
       </div>
 
-      <Link 
-        href="/day-two" 
-        className="absolute bottom-4 md:bottom-6 text-[12px] md:text-[14px] text-zinc-800 opacity-0 hover:opacity-100 transition-all duration-700 cursor-help select-none hover:text-zinc-400"
+      <Link
+        href="/day-two"
+        className="absolute bottom-4 md:bottom-6 text-[12px] md:text-[14px] text-zinc-700 md:text-zinc-800 md:opacity-0 md:hover:opacity-100 transition-all duration-700 cursor-help select-none md:hover:text-zinc-400 active:text-zinc-400"
       >
         but what about day two?
       </Link>

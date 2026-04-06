@@ -89,7 +89,7 @@ export default function DayTwo() {
   }, [currentLine, currentChar, quote]);
 
   return (
-    <main className="min-h-screen bg-black text-green-500 font-mono relative overflow-hidden select-none pointer-events-none cursor-default">
+    <main className="min-h-screen bg-black text-green-500 font-mono relative overflow-hidden select-none cursor-default">
       {/* Scanline effect */}
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,_rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] animate-scanline" />
 
@@ -134,17 +134,32 @@ export default function DayTwo() {
 
             <div className="mt-6 md:mt-12 flex flex-col items-start justify-center gap-2 text-xs md:text-sm font-[Courier]">
               <div className="flex items-center gap-4 text-green-500/70">
-                <span className="text-[10px] md:text-xs opacity-50">Use arrow keys to select, ENTER to confirm</span>
+                <span className="text-[10px] md:text-xs opacity-50 hidden md:inline">Use arrow keys to select, ENTER to confirm</span>
+                <span className="text-[10px] md:text-xs opacity-50 md:hidden">Tap to select</span>
               </div>
               <div className="flex flex-col items-start gap-1 mt-2">
-                <div className={`flex items-center gap-2 ${selectedOption === 'back' ? 'text-green-500' : 'text-green-500/50'}`}>
+                <button
+                  onClick={() => {
+                    setSelectedOption('back');
+                    setIsLoading(true);
+                    setTimeout(() => router.push('/'), 1500);
+                  }}
+                  className={`flex items-center gap-2 py-1 pointer-events-auto ${selectedOption === 'back' ? 'text-green-500' : 'text-green-500/50'}`}
+                >
                   <span className="w-4">{selectedOption === 'back' ? '>' : ' '}</span>
-                  <span>[DEL] GO BACK</span>
-                </div>
-                <div className={`flex items-center gap-2 ${selectedOption === 'exit' ? 'text-green-500' : 'text-green-500/50'}`}>
+                  <span className="hidden md:inline">[DEL] </span><span>GO BACK</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedOption('exit');
+                    setIsLoading(true);
+                    setTimeout(() => router.push('https://www.google.com'), 1500);
+                  }}
+                  className={`flex items-center gap-2 py-1 pointer-events-auto ${selectedOption === 'exit' ? 'text-green-500' : 'text-green-500/50'}`}
+                >
                   <span className="w-4">{selectedOption === 'exit' ? '>' : ' '}</span>
-                  <span>[ESC] EXIT</span>
-                </div>
+                  <span className="hidden md:inline">[ESC] </span><span>EXIT</span>
+                </button>
               </div>
               {isLoading && (
                 <div className="font-[Courier] text-green-500/70 h-6 flex items-center mt-4">

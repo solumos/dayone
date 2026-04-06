@@ -44,20 +44,18 @@ export default function Home() {
         </p>
 
         <div className="flex justify-center">
-          <div className="h-[350px] md:h-[400px] flex items-start">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={handleDateSelect}
-              disabled={(date) => {
-                if (!maxDate) return true;
-                const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-                const max = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
-                return d > max;
-              }}
-              className="rounded-lg bg-zinc-900/80 border border-zinc-800 scale-90 md:scale-100"
-            />
-          </div>
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={handleDateSelect}
+            disabled={(date) => {
+              if (!maxDate) return true;
+              const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+              const max = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
+              return d > max;
+            }}
+            className="rounded-lg bg-zinc-900/80 border border-zinc-800"
+          />
         </div>
       </div>
 

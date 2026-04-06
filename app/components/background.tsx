@@ -29,9 +29,9 @@ export function Background() {
         />
       </div>
 
-      {/* Prism effect */}
-      <div className="absolute inset-0 overflow-hidden mix-blend-soft-light">
-        <div 
+      {/* Prism effect - hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden mix-blend-soft-light hidden md:block">
+        <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-40"
           style={{
             background: 'conic-gradient(from 0deg, #3b82f6, #6366f1, #8b5cf6, #3b82f6)',
